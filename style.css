@@ -1,0 +1,43 @@
+
+
+ /* section div {
+    padding: 1px;
+    box-sizing: border-box;
+    float:left;
+    width: 30%;
+    height: 3%;
+    display: inline-block;
+ } */
+
+ /* section{
+     
+    width: 100%;
+ } */
+
+ 
+ body{
+   background-color: lightblue;
+}
+
+header h2{
+   text-align: center;
+   color: blue;
+}
+
+/* #products{
+   
+       max-width: 960px;
+ } */
+
+ section div img {
+   display: inline-block;
+   max-width: 98%;
+   height: auto;
+   width: 30%;
+   margin: 1%;
+   float: left;
+ }
+ 
+
+
+ 
