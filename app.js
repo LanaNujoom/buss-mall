@@ -50,19 +50,44 @@ function renderMallPicst(leftImage, midImage, rightImage) {
 
 function pickImage() {
 
+    // checkAvailability(leftproductImageName);
 
     do {
         var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        var leftproductImageName = arrayProducts[leftImage].name;
+
+    } while (checkAvailability(leftproductImageName));
+
+
+
+    do {
+        // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        var rightproductImageName = arrayProducts[rightImage].name;
+
+    } while ( leftImage === rightImage || checkAvailability(rightproductImageName));
 
 
-    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage);
+    do {
+        // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        var midproductImageName = arrayProducts[midImage].name;
 
+    } while (leftImage === midImage || midImage === rightImage  || checkAvailability(midproductImageName));
+
+
+    shownImages = [];
+    shownImages.push(
+        arrayProducts[leftImage],
+        arrayProducts[rightImage],
+        arrayProducts[midImage]
+
+    )
 
     renderMallPicst(leftImage, midImage, rightImage)
 }
-
 
 
 
