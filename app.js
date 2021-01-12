@@ -13,6 +13,7 @@ var productSection = document.getElementById('products');
 var trialsleft = 25;
 var productsCanvas = document.getElementById('productsShart').getContext('2d');
 var shownImages = [];
+var clear = document.getElementById('clearLocalStorage');
 
 
 
@@ -25,6 +26,32 @@ function Product(name, image) {
 
     arrayProducts.push(this);
 }
+
+function storeProducts(){
+
+    localStorage.setItem('ourProducts', JSON.stringify(arrayProducts));
+}
+
+function clearLocalStorage() {
+
+    localStorage.clear();
+
+    arrayProducts = [];
+
+    renderChart();
+}
+
+
+function checkAndRestore() {
+
+    if (localStorage.length > 0) { 
+        arrayProducts = JSON.parse(localStorage.getItem('ourProducts')); 
+      
+
+    }
+
+}
+
 
 
 function renderMallPicst(leftImage, midImage, rightImage) {
@@ -214,18 +241,18 @@ function pickImage() {
         // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
         // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var rightproductImageName = arrayProducts[leftImage].name;
+        var rightproductImageName = arrayProducts[rightImage].name;
 
-    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage || checkAvailability(rightproductImageName));
+    } while ( leftImage === rightImage ||  checkAvailability(rightproductImageName));
 
 
     do {
         // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
         // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var midproductImageName = arrayProducts[leftImage].name;
+        var midproductImageName = arrayProducts[midImage].name;
 
-    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage || checkAvailability(rightproductImageName) || checkAvailability(midproductImageName) || checkAvailability(leftproductImageName));
+    } while (leftImage === midImage  || midImage === rightImage ||  checkAvailability(midproductImageName));
 
 
     shownImages = [];
@@ -251,6 +278,8 @@ function checkMallPic(objectIndicator) {
     }
 }
 
+
+
 new Product('bag', 'bag.jpg');
 new Product('banana', 'banana.jpg');
 new Product('boots', 'boots.jpg');
@@ -272,8 +301,15 @@ new Product('usb', 'usb.gif');
 new Product('water-can', 'water-can.jpg');
 new Product('wine-glass', 'wine-glass.jpg');
 
+// localStorage.setItem();
 
 pickImage();
+clear.addEventListener('click',clearLocalStorage);
+checkAndRestore();
+
+
+
+
 
 
 
@@ -295,6 +331,7 @@ function countImg(event) {
     } else {
         productSection.removeEventListener('click', countImg);
         renderChart();
+        storeProducts();
 
 
     }
