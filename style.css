@@ -24,11 +24,6 @@ header h2{
    color: blue;
 }
 
-/* #products{
-   
-       max-width: 960px;
- } */
-
  section div img {
    display: inline-block;
    max-width: 98%;
