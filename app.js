@@ -214,18 +214,18 @@ function pickImage() {
         // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
         // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var rightproductImageName = arrayProducts[leftImage].name;
+        var rightproductImageName = arrayProducts[rightImage].name;
 
-    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage || checkAvailability(rightproductImageName));
+    } while ( leftImage === rightImage || checkAvailability(rightproductImageName));
 
 
     do {
         // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
         // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var midproductImageName = arrayProducts[leftImage].name;
+        var midproductImageName = arrayProducts[midImage].name;
 
-    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage || checkAvailability(rightproductImageName) || checkAvailability(midproductImageName) || checkAvailability(leftproductImageName));
+    } while (leftImage === midImage || midImage === rightImage  || checkAvailability(midproductImageName));
 
 
     shownImages = [];
