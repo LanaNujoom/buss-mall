@@ -16,6 +16,7 @@ var shownImages = [];
 
 
 
+
 function Product(name, image) {
     this.image = image;
     this.name = name;
@@ -25,6 +26,10 @@ function Product(name, image) {
 
     arrayProducts.push(this);
 }
+
+
+
+
 
 
 function renderMallPicst(leftImage, midImage, rightImage) {
@@ -42,6 +47,7 @@ function renderMallPicst(leftImage, midImage, rightImage) {
 
 
 }
+
 
 function renderChart() {
 
@@ -198,6 +204,9 @@ function checkAvailability(selectedProductName) {
 
 
 
+
+
+
 function pickImage() {
 
     
@@ -211,19 +220,19 @@ function pickImage() {
 
 
     do {
-        
+       
         var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var rightproductImageName = arrayProducts[rightImage].name;
 
-    } while ( leftImage === rightImage || checkAvailability(rightproductImageName));
+    } while (  leftImage === rightImage ||  checkAvailability(rightproductImageName));
 
 
     do {
-        
+       
         var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var midproductImageName = arrayProducts[midImage].name;
 
-    } while (leftImage === midImage || midImage === rightImage  || checkAvailability(midproductImageName));
+    } while (leftImage === midImage ||  midImage === rightImage ||  checkAvailability(midproductImageName));
 
 
     shownImages = [];
@@ -240,6 +249,8 @@ function pickImage() {
 
 
 
+
+
 function checkMallPic(objectIndicator) {
     for (var index = 0; index < arrayProducts.length; index++) {
         if (arrayProducts[index].url === objectIndicator) {
@@ -248,6 +259,8 @@ function checkMallPic(objectIndicator) {
         }
     }
 }
+
+
 
 new Product('bag', 'bag.jpg');
 new Product('banana', 'banana.jpg');
@@ -271,17 +284,20 @@ new Product('water-can', 'water-can.jpg');
 new Product('wine-glass', 'wine-glass.jpg');
 
 
+
 pickImage();
 
 
 
 productSection.addEventListener('click', countImg);
 
+
+
 function countImg(event) {
     var targetId = event.target.id;
 
     if (trialsleft !== 0) {
-        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') { 
+        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') {
             var objectIndicator = event.target.getAttribute('src');
 
             checkMallPic(objectIndicator);
@@ -293,6 +309,7 @@ function countImg(event) {
     } else {
         productSection.removeEventListener('click', countImg);
         renderChart();
+
 
 
     }
@@ -311,6 +328,7 @@ function numberShown(objectIndicator) {
 
 
 var results = document.getElementById("results");
+
 
 results.addEventListener("click", function () {
     var ul = document.createElement("ul");
