@@ -25,30 +25,10 @@ function Product(name, image) {
     arrayProducts.push(this);
 }
 
-function storeProducts(){
-
-    localStorage.setItem('ourProducts', JSON.stringify(arrayProducts));
-}
-
-function clearLocalStorage() {
-
-    localStorage.clear();
-
-    arrayProducts = [];
-
-    renderChart();
-}
 
 
-function checkAndRestore() {
 
-    if (localStorage.length > 0) { 
-        arrayProducts = JSON.parse(localStorage.getItem('ourProducts')); 
-      
 
-    }
-
-}
 
 
 
@@ -75,44 +55,23 @@ function renderMallPicst(leftImage, midImage, rightImage) {
 
 function pickImage() {
 
-    // checkAvailability(leftproductImageName);
 
     do {
         var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var leftproductImageName = arrayProducts[leftImage].name;
-
-    } while (checkAvailability(leftproductImageName));
-
-
-
-    do {
-        // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var rightproductImageName = arrayProducts[rightImage].name;
-
-    } while ( leftImage === rightImage ||  checkAvailability(rightproductImageName));
-
-
-    do {
-        // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var midproductImageName = arrayProducts[midImage].name;
-
-    } while (leftImage === midImage  || midImage === rightImage ||  checkAvailability(midproductImageName));
+        var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
 
 
-    shownImages = [];
-    shownImages.push(
-        arrayProducts[leftImage],
-        arrayProducts[rightImage],
-        arrayProducts[midImage]
+    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage);
 
-    )
 
-    renderMallPicst(leftImage, midImage, rightImage)
+    renderMallPicst(leftImage, midImage, rightImage);
 }
+
+
+
+
+
 
 
 function checkMallPic(objectIndicator) {
@@ -147,15 +106,9 @@ new Product('usb', 'usb.gif');
 new Product('water-can', 'water-can.jpg');
 new Product('wine-glass', 'wine-glass.jpg');
 
-// localStorage.setItem();
+
 
 pickImage();
-clear.addEventListener('click',clearLocalStorage);
-checkAndRestore();
-
-
-
-
 
 
 
@@ -177,7 +130,7 @@ function countImg(event) {
     } else {
         productSection.removeEventListener('click', countImg);
         renderChart();
-        storeProducts();
+
 
 
     }
