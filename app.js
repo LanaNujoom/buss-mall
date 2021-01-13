@@ -106,7 +106,7 @@ function countImg(event) {
     var targetId = event.target.id;
 
     if (trialsleft !== 0) {
-        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') { // we are checking if the user clicked on the correct image
+        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') { 
             var objectIndicator = event.target.getAttribute('src');
 
             checkMallPic(objectIndicator);
