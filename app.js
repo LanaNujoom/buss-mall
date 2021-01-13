@@ -49,6 +49,8 @@ function renderMallPicst(leftImage, midImage, rightImage) {
 }
 
 
+
+
 function renderChart() {
 
     var arrayOfProductNames = [];
@@ -203,10 +205,6 @@ function checkAvailability(selectedProductName) {
 
 
 
-
-
-
-
 function pickImage() {
 
     
@@ -243,10 +241,8 @@ function pickImage() {
 
     )
 
-    renderMallPicst(leftImage, midImage, rightImage)
+    renderMallPicst(leftImage, midImage, rightImage);
 }
-
-
 
 
 
