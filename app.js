@@ -15,8 +15,6 @@ var productsCanvas = document.getElementById('productsShart').getContext('2d');
 var shownImages = [];
 
 
-
-
 function Product(name, image) {
     this.image = image;
     this.name = name;
@@ -26,10 +24,6 @@ function Product(name, image) {
 
     arrayProducts.push(this);
 }
-
-
-
-
 
 
 function renderMallPicst(leftImage, midImage, rightImage) {
@@ -206,7 +200,6 @@ function checkAvailability(selectedProductName) {
 
 
 function pickImage() {
-
     
 
     do {
@@ -218,9 +211,8 @@ function pickImage() {
 
 
     do {
-       
+   
         var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var rightproductImageName = arrayProducts[rightImage].name;
 
     } while (  leftImage === rightImage ||  checkAvailability(rightproductImageName));
 
@@ -232,18 +224,8 @@ function pickImage() {
 
     } while (leftImage === midImage ||  midImage === rightImage ||  checkAvailability(midproductImageName));
 
-
-    shownImages = [];
-    shownImages.push(
-        arrayProducts[leftImage],
-        arrayProducts[rightImage],
-        arrayProducts[midImage]
-
-    )
-
     renderMallPicst(leftImage, midImage, rightImage);
 }
-
 
 
 
@@ -294,6 +276,7 @@ function countImg(event) {
 
     if (trialsleft !== 0) {
         if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') {
+
             var objectIndicator = event.target.getAttribute('src');
 
             checkMallPic(objectIndicator);
