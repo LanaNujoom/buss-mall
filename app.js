@@ -11,8 +11,7 @@ var midPicText = document.getElementById('mid_pic_h2');
 var rightPicText = document.getElementById('right_pic_h2');
 var productSection = document.getElementById('products');
 var trialsleft = 25;
-// var productsCanvas = document.getElementById('productsShart').getContext('2d');
-// var shownImages = [];
+
 
 
 
