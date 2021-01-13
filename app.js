@@ -11,8 +11,8 @@ var midPicText = document.getElementById('mid_pic_h2');
 var rightPicText = document.getElementById('right_pic_h2');
 var productSection = document.getElementById('products');
 var trialsleft = 25;
-
-
+var productsCanvas = document.getElementById('productsShart').getContext('2d');
+var shownImages = [];
 
 
 function Product(name, image) {
@@ -24,12 +24,6 @@ function Product(name, image) {
 
     arrayProducts.push(this);
 }
-
-
-
-
-
-
 
 
 function renderMallPicst(leftImage, midImage, rightImage) {
@@ -51,26 +45,187 @@ function renderMallPicst(leftImage, midImage, rightImage) {
 
 
 
+function renderChart() {
+
+    var arrayOfProductNames = [];
+    var arrayOfProductCount = [];
+    var arrayOfProductShown = [];
 
 
-function pickImage() {
+    for (var index = 0; index < arrayProducts.length; index++) {
+        arrayOfProductNames.push(arrayProducts[index].name);
+        arrayOfProductCount.push(arrayProducts[index].counter);
+        arrayOfProductShown.push(arrayProducts[index].timeShow);
+
+    }
+
+    var myChart = new Chart(productsCanvas, {
+        type: 'bar',
+        data: {
+            labels: arrayOfProductNames,
+            datasets: [
+                {
+                    label: '# of Product Clicks',
+                    data: arrayOfProductCount,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(200, 159, 64, 0.2)',
+                        'rgba(255, 103, 132, 0.2)',
+                        'rgba(54, 144, 235, 0.2)',
+                        'rgba(50, 206, 86, 0.2)',
+                        'rgba(75, 192, 89, 0.2)',
+                        'rgba(153, 102, 55, 0.2)',
+                        'rgba(255, 201, 64, 0.2)',
+                        'rgba(87, 162, 235, 0.2)',
+                        'rgba(233, 206, 86, 0.2)',
+                        'rgba(88, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159,90, 0.2)',
+                        'rgba(54, 77, 235, 0.2)',
+                        'rgba(255, 55, 86, 0.2)',
+                        'rgba(77, 192, 90, 0.2)',
+                        'rgba(200, 102, 255, 0.2)',
+                        'rgba(255, 200, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(250, 159, 64, 1)',
+                        'rgba(153, 100, 255, 1)',
+                        'rgba(153, 103, 255, 1)',
+                        'rgba(153, 102, 205, 1)',
+                        'rgba(154, 100, 255, 1)',
+                        'rgba(65, 102, 255, 1)',
+                        'rgba(153, 206, 255, 1)',
+                        'rgba(206, 206, 255, 1)',
+                        'rgba(206, 102, 255, 1)',
+                        'rgba(153, 103, 255, 1)',
+                        'rgba(158, 102, 255, 1)',
+                        'rgba(159, 101, 255, 1)',
+                        'rgba(153, 200, 255, 1)',
+                        'rgba(175, 102, 255, 1)'
+
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Time shown for the Product',
+                    data: arrayOfProductShown,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(200, 159, 64, 0.2)',
+                        'rgba(255, 103, 132, 0.2)',
+                        'rgba(54, 144, 235, 0.2)',
+                        'rgba(50, 206, 86, 0.2)',
+                        'rgba(75, 192, 89, 0.2)',
+                        'rgba(153, 102, 55, 0.2)',
+                        'rgba(255, 201, 64, 0.2)',
+                        'rgba(87, 162, 235, 0.2)',
+                        'rgba(233, 206, 86, 0.2)',
+                        'rgba(88, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159,90, 0.2)',
+                        'rgba(54, 77, 235, 0.2)',
+                        'rgba(255, 55, 86, 0.2)',
+                        'rgba(77, 192, 90, 0.2)',
+                        'rgba(200, 102, 255, 0.2)',
+                        'rgba(255, 200, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(250, 159, 64, 1)',
+                        'rgba(153, 100, 255, 1)',
+                        'rgba(153, 103, 255, 1)',
+                        'rgba(153, 102, 205, 1)',
+                        'rgba(154, 100, 255, 1)',
+                        'rgba(65, 102, 255, 1)',
+                        'rgba(153, 206, 255, 1)',
+                        'rgba(206, 206, 255, 1)',
+                        'rgba(206, 102, 255, 1)',
+                        'rgba(153, 103, 255, 1)',
+                        'rgba(158, 102, 255, 1)',
+                        'rgba(159, 101, 255, 1)',
+                        'rgba(153, 200, 255, 1)',
+                        'rgba(175, 102, 255, 1)'
+
+                    ],
+                    borderWidth: 1
+                }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
 
-    do {
-        var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
+}
 
 
-    } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage);
+function checkAvailability(selectedProductName) {
 
+    for (var index = 0; index < shownImages.length; index++) {
+        if (shownImages[index].name === selectedProductName) {
+            return true;
 
-    renderMallPicst(leftImage, midImage, rightImage);
+        }
+
+    }
+    return false;
+
 }
 
 
 
+function pickImage() {
+    
 
+    do {
+        var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        var leftproductImageName = arrayProducts[leftImage].name;
+
+    } while (checkAvailability(leftproductImageName));
+
+
+
+    do {
+   
+        var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
+
+    } while (  leftImage === rightImage ||  checkAvailability(rightproductImageName));
+
+
+    do {
+       
+        var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        var midproductImageName = arrayProducts[midImage].name;
+
+    } while (leftImage === midImage ||  midImage === rightImage ||  checkAvailability(midproductImageName));
+
+    renderMallPicst(leftImage, midImage, rightImage);
+}
 
 
 
@@ -114,11 +269,14 @@ pickImage();
 
 productSection.addEventListener('click', countImg);
 
+
+
 function countImg(event) {
     var targetId = event.target.id;
 
     if (trialsleft !== 0) {
-        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') { 
+        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') {
+
             var objectIndicator = event.target.getAttribute('src');
 
             checkMallPic(objectIndicator);
@@ -149,6 +307,7 @@ function numberShown(objectIndicator) {
 
 
 var results = document.getElementById("results");
+
 
 results.addEventListener("click", function () {
     var ul = document.createElement("ul");

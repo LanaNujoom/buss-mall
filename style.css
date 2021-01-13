@@ -1,6 +1,4 @@
-
- 
- body{
+body{
    background-color: lightblue;
 }
 
@@ -9,8 +7,8 @@ header h2{
    color: blue;
 }
 
+
  section div img {
-   display: inline-block;
    max-width: 98%;
    height: auto;
    width: 30%;
@@ -20,4 +18,3 @@ header h2{
  
 
 
- 
