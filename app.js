@@ -26,6 +26,12 @@ function Product(name, image) {
 }
 
 
+
+
+
+
+
+
 function renderMallPicst(leftImage, midImage, rightImage) {
     leftPicImg.setAttribute('src', arrayProducts[leftImage].url);
     midPictImg.setAttribute('src', arrayProducts[midImage].url);
@@ -59,8 +65,11 @@ function pickImage() {
     } while (leftImage === midImage || leftImage === rightImage || midImage === rightImage);
 
 
-    renderMallPicst(leftImage, midImage, rightImage)
+    renderMallPicst(leftImage, midImage, rightImage);
 }
+
+
+
 
 
 
@@ -73,6 +82,8 @@ function checkMallPic(objectIndicator) {
         }
     }
 }
+
+
 
 new Product('bag', 'bag.jpg');
 new Product('banana', 'banana.jpg');
@@ -94,6 +105,7 @@ new Product('unicorn', 'unicorn.jpg');
 new Product('usb', 'usb.gif');
 new Product('water-can', 'water-can.jpg');
 new Product('wine-glass', 'wine-glass.jpg');
+
 
 
 pickImage();
@@ -118,6 +130,7 @@ function countImg(event) {
     } else {
         productSection.removeEventListener('click', countImg);
         renderChart();
+
 
 
     }
