@@ -200,7 +200,7 @@ function checkAvailability(selectedProductName) {
 
 function pickImage() {
 
-    // checkAvailability(leftproductImageName);
+    
 
     do {
         var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
@@ -211,8 +211,7 @@ function pickImage() {
 
 
     do {
-        // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        
         var rightImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var rightproductImageName = arrayProducts[rightImage].name;
 
@@ -220,8 +219,7 @@ function pickImage() {
 
 
     do {
-        // var leftImage = Math.round(Math.random() * (arrayProducts.length - 1));
-        // var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
+        
         var midImage = Math.round(Math.random() * (arrayProducts.length - 1));
         var midproductImageName = arrayProducts[midImage].name;
 
@@ -283,7 +281,7 @@ function countImg(event) {
     var targetId = event.target.id;
 
     if (trialsleft !== 0) {
-        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') { // we are checking if the user clicked on the correct image
+        if (targetId === 'left_pic_img' || targetId === 'right_pic_img' || targetId === 'mid_pic_img') { 
             var objectIndicator = event.target.getAttribute('src');
 
             checkMallPic(objectIndicator);
